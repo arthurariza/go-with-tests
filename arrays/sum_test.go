@@ -1,9 +1,7 @@
 package arrays
 
 import (
-	"fmt"
 	"reflect"
-	"slices"
 	"testing"
 )
 
@@ -15,7 +13,7 @@ func TestSum(t *testing.T) {
 		want := 15
 
 		if got != want {
-			fmt.Errorf("got %d want %d given %v", got, want, numbers)
+			t.Errorf("got %d want %d given %v", got, want, numbers)
 		}
 	})
 }
@@ -28,7 +26,7 @@ func TestSumAll(t *testing.T) {
 		want := []int{6}
 
 		if !reflect.DeepEqual(got, want) {
-			fmt.Errorf("got: %v want: %v given: %v", got, want, numbers)
+			t.Errorf("got: %v want: %v given: %v", got, want, numbers)
 		}
 	})
 
@@ -39,8 +37,8 @@ func TestSumAll(t *testing.T) {
 		got := SumAll(numbersOne, numbersTwo)
 		want := []int{6, 3}
 
-		if slices.Equal(got, want) {
-			fmt.Errorf("got: %v want: %v", got, want)
+		if !reflect.DeepEqual(got, want) {
+			t.Errorf("got: %v want: %v", got, want)
 		}
 	})
 }
@@ -52,7 +50,7 @@ func TestSumTail(t *testing.T) {
 	want := 14
 
 	if got != want {
-		fmt.Errorf("got %d want %d given %v", got, want, numbers)
+		t.Errorf("got %d want %d given %v", got, want, numbers)
 	}
 }
 
